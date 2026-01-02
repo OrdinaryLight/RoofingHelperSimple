@@ -32,13 +32,13 @@ export async function POST(request: NextRequest) {
         const response = await fetch(url);
         const data = await response.json();
 
-        if (data.status !== "OK") {
-            return NextResponse.json({ error: `Geocoding failed: ${data.status}` }, { status: 400 });
-        }
-
         //temp fix
         if (data.status !== "OK") {
             console.log("Full Google API response:", JSON.stringify(data, null, 2));
+        }
+
+        if (data.status !== "OK") {
+            return NextResponse.json({ error: `Geocoding failed: ${data.status}` }, { status: 400 });
         }
 
         if (!data.results || data.results.length === 0) {
