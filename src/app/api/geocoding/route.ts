@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
 
         //temp fix
         if (data.status !== "OK") {
-            console.log("Full Google API response:", JSON.stringify(data, null, 2));
+            console.error("Full Google API response:", JSON.stringify(data, null, 2));
         }
 
         if (data.status !== "OK") {
